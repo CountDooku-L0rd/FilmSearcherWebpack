@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./build",
+    "module": "ESNext",
+    "target": "es6",
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    "strict": true,
+    "ignoreDeprecations": "6.0",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "rewriteRelativeImportExtensions": true,
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "src/**/*",
+    "src/declarations.d.ts"
+  ],
+  "exclude": ["node_modules", "dist"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
+}
