@@ -1,12 +1,32 @@
-import {sum} from "./test";
-import {createRoot} from "react-dom/client";
-import {App} from "./component/App";
+import { createRoot } from "react-dom/client";
+import { App } from "./component/App";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { LazyAbout } from "./pages/about/About.lazy";
+import { LazyShop } from "./pages/shop/Shop.lazy";
+import { Suspense } from "react";
 
 const root = document.getElementById("root");
 if (!root) {
-    throw new Error("root is undefined");
+  throw new Error("root is undefined");
 }
 
-const container = createRoot(root)
+const container = createRoot(root);
 
-container.render(<App/>);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/about",
+        element: <Suspense fallback={'Loading...'}><LazyAbout /></Suspense>,
+      },
+      {
+        path: "/shop",
+        element: <Suspense fallback={'Loading...'}><LazyShop /></Suspense>,
+      },
+    ],
+  },
+]);
+
+container.render(<RouterProvider router={router} />);
